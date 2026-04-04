@@ -55,7 +55,7 @@ function CollectionCard({
       </div>
       <div
         className="absolute flex items-center justify-center rounded-full bg-white"
-        style={{ width: 14, height: 14, top: 8, right: 0, border: `2.2px solid ${borderColor}` }}
+        style={{ width: 14, height: 14, top: 8, left: 98, border: `2.2px solid ${borderColor}` }}
       >
         <span style={{ fontFamily: "'VK Sans Display', sans-serif", fontWeight: 600, fontSize: 8, color: "#444f5f" }}>
           {count}
@@ -98,8 +98,8 @@ export default function Collections({ onBack, onOpenCollection }: CollectionsPro
         </button>
       </div>
 
-      {/* Segment control */}
-      <div className="absolute z-20 flex items-center gap-[12px]" style={{ top: 73, left: 17 }}>
+      {/* Segment control — поднят выше по Figma */}
+      <div className="absolute z-20 flex items-center gap-[12px]" style={{ top: 64, left: 17 }}>
         <div className="flex items-center gap-[4px]">
           <span className="text-white" style={{ fontFamily: "'VK Sans Display', sans-serif", fontWeight: 600, fontSize: 15 }}>Мои</span>
           <span style={{ fontFamily: "'VK Sans Display', sans-serif", fontWeight: 600, fontSize: 15, color: "#8e7cf3" }}>9</span>
@@ -109,7 +109,7 @@ export default function Collections({ onBack, onOpenCollection }: CollectionsPro
       </div>
 
       {/* Scrollable grid */}
-      <div className="absolute z-10 overflow-y-auto" style={{ top: 105, left: 0, right: 0, bottom: 64 }}>
+      <div className="absolute z-10 overflow-y-auto" style={{ top: 95, left: 0, right: 0, bottom: 64 }}>
         <div className="flex flex-col gap-[22px] px-[11px] pb-[20px]">
           {Array.from({ length: Math.ceil(collections.length / 2) }, (_, rowIdx) => (
             <div key={rowIdx} className="flex gap-[7px]">
@@ -131,15 +131,17 @@ export default function Collections({ onBack, onOpenCollection }: CollectionsPro
         style={{ height: 60, background: "linear-gradient(to top, rgba(12,14,24,0.9) 0%, rgba(12,14,24,0) 100%)" }}
       />
 
-      {/* Tab bar — точный градиент и блюр из Figma */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-30"
-        style={{
+      {/* Tab bar — градиент + progressive blur */}
+      <div className="absolute bottom-0 left-0 right-0 z-30">
+        <div className="absolute inset-0" style={{
           background: "linear-gradient(179.918deg, rgba(34,35,40,0) 3.211%, rgba(11,12,14,0.9) 68.505%, rgb(11,12,14) 99.862%)",
-          backdropFilter: "blur(15.531px)",
-        }}
-      >
-        <div className="flex items-center" style={{ height: 37 }}>
+        }} />
+        <div className="absolute inset-0" style={{
+          backdropFilter: "blur(31.06px)",
+          WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 100%)",
+          maskImage: "linear-gradient(to top, black 0%, transparent 100%)",
+        }} />
+        <div className="relative flex items-center" style={{ height: 37 }}>
           <div className="flex-1 flex justify-center items-center">
             <img src="/icons/Icon1.svg" alt="Сохранёнки" style={{ width: 22, height: 22 }} />
           </div>

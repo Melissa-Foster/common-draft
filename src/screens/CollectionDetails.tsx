@@ -169,15 +169,17 @@ export default function CollectionDetail({ onBack }: CollectionDetailProps) {
         style={{ height: 60, background: "linear-gradient(to top, rgba(11,8,16,0.9) 0%, rgba(11,8,16,0) 100%)" }}
       />
 
-      {/* Tab bar — точный градиент и блюр из Figma */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-30"
-        style={{
+      {/* Tab bar — градиент + progressive blur */}
+      <div className="absolute bottom-0 left-0 right-0 z-30">
+        <div className="absolute inset-0" style={{
           background: "linear-gradient(179.918deg, rgba(34,35,40,0) 3.211%, rgba(11,12,14,0.9) 68.505%, rgb(11,12,14) 99.862%)",
-          backdropFilter: "blur(15.531px)",
-        }}
-      >
-        <div className="flex items-center" style={{ height: 37 }}>
+        }} />
+        <div className="absolute inset-0" style={{
+          backdropFilter: "blur(31.06px)",
+          WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 100%)",
+          maskImage: "linear-gradient(to top, black 0%, transparent 100%)",
+        }} />
+        <div className="relative flex items-center" style={{ height: 37 }}>
           <div className="flex-1 flex justify-center items-center">
             <img src="/icons/Icon1.svg" alt="Сохранёнки" style={{ width: 22, height: 22 }} />
           </div>
