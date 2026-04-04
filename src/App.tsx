@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './index.css';
 import SavedMain from './screens/SavedMain';
 import Collections from './screens/Collections';
-import CollectionDetail from './screens/CollectionDetail';
+import CollectionDetail from './screens/CollectionDetails';
  
 type Screen = 'main' | 'collections' | 'collection-detail';
  
